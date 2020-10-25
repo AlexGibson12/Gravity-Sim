@@ -3,7 +3,7 @@ let height = 3200
 function setup() {
   createCanvas(width,height);
 }
-let particles = [{x:0,y:0,vx:1000,vy:100,m:1000,r:30,color:'#fae'}, {x:1500,y:1500,vx:0,vy:0,m:1000,r:30,color:'#35A27F'},{x:0,y:1000,vx:200,vy:10,m:1000000,r:30,color:'#FF2536'}]
+let particles = []
 function draw(){
   clear()
   iterate(particles,0.01)
@@ -15,7 +15,7 @@ function draw(){
 }
 function mouseClicked() {
   
-  particles.push({x:mouseX,y:mouseY,vx:(Math.random()*100)-50,vy:(Math.random()*100)-50,m:1000,r:30,color:'#000'})
+  particles.push({x:mouseX,y:mouseY,vx:(Math.random()*500)-250,vy:(Math.random()*500)-250,m:Math.random()*100000,r:30,color:'#000'})
 }
 function iterate(particles,deltat){
   for(let i = 0;i<particles.length;i++){
@@ -38,5 +38,6 @@ function iterate(particles,deltat){
   }
 }
 function distance(particle1,particle2){
-  return Math.sqrt(Math.pow((particle1.x-particle2.x),2)+Math.pow((particle1.y-particle2.y),2))
+  let distance =  Math.sqrt(Math.pow((particle1.x-particle2.x),2)+Math.pow((particle1.y-particle2.y),2))
+  return Math.max(distance,particle1.r+particle2.r)
 }
