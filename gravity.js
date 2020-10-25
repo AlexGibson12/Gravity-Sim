@@ -13,6 +13,10 @@ function draw(){
     ellipse(particles[k].x,particles[k].y,particles[k].r,particles[k].r)
   }
 }
+function mouseClicked() {
+  
+  particles.push({x:mouseX,y:mouseY,vx:(Math.random()*100)-50,vy:(Math.random()*100)-50,m:1000,r:30,color:'#000'})
+}
 function iterate(particles,deltat){
   for(let i = 0;i<particles.length;i++){
     deltavx = 0
